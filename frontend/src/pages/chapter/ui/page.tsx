@@ -36,7 +36,7 @@ const contents: Content[] = [
   },
 ];
 
-const ChapterPage = () => {
+const ChapterPage = ({ chapterId }: { chapterId: string }) => {
   const activeIndex = contents.findIndex((content) => !content.isCompleted);
 
   return (
@@ -49,6 +49,7 @@ const ChapterPage = () => {
           {contents.map((content, index) => (
             <StepCard
               key={content.title}
+              chapterId={chapterId}
               content={content}
               index={index + 1}
               isActive={index === activeIndex}

@@ -26,12 +26,6 @@ const style = tv({
   },
 });
 
-interface Props {
-  content: Content;
-  index: number;
-  isActive: boolean;
-}
-
 const getTypeText = (type: Content["type"]) => {
   switch (type) {
     case "concept":
@@ -45,7 +39,17 @@ const getTypeText = (type: Content["type"]) => {
   }
 };
 
-const StepCard = ({ content, index, isActive }: Props) => {
+const StepCard = ({
+  content,
+  index,
+  isActive,
+  chapterId,
+}: {
+  content: Content;
+  index: number;
+  isActive: boolean;
+  chapterId: string;
+}) => {
   const navigate = useNavigate();
   const styles = style({ isActive });
 
@@ -74,7 +78,12 @@ const StepCard = ({ content, index, isActive }: Props) => {
             radius="full"
             size="sm"
             variant={isActive ? "solid" : "ghost"}
-            onPress={() => navigate({ to: ROUTE[content.type] })}
+            onPress={() =>
+              navigate({
+                to: ROUTE[content.type],
+                params: { chapterId },
+              })
+            }
           >
             {content.isCompleted ? "다시보기" : "학습하기"}
           </Button>

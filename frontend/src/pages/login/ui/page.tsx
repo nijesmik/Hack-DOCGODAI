@@ -1,11 +1,9 @@
 import { Button, Form } from "@heroui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link, useNavigate } from "@tanstack/react-router";
-import { useSetAtom } from "jotai";
 import { useForm } from "react-hook-form";
 
 import { ROUTE } from "@/shared/constants";
-import { tokenAtom } from "@/shared/store";
 import { formStyle } from "@/shared/styles";
 import { HookFormInput, Section } from "@/shared/ui";
 
@@ -14,7 +12,6 @@ import type { LoginFormData } from "../model/types";
 
 const LoginPage = () => {
   const navigate = useNavigate();
-  const setToken = useSetAtom(tokenAtom);
 
   const {
     control,
